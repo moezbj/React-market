@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import autoBind from 'react-autobind';
 import logo from './logo.svg';
 import './App.css';
 
@@ -26,7 +27,7 @@ class App extends Component {
       myCart:[],
       total:0
     }
-    this.addToCart=this.addToCart.bind(this)
+    autoBind(this);
   }
 
   addToCart(el){

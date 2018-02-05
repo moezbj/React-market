@@ -21,7 +21,8 @@ class Cart extends Component {
           })
         }
         <hr className="total"/>
-        Total :{this.props.total} $
+        <p>Total :{this.props.total} $</p>
+        <button onClick={ () => this.props.checkOut() }> chekout</button>
       </ul>
       </div>
     );

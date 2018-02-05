@@ -36,6 +36,12 @@ class App extends Component {
       total:this.state.total+el.price
     }, () => console.log(this.state.total))
   }
+  checkOut(){
+    this.setState({
+      myCart:[],
+      total:0
+    })
+  }
 
   render() {
     return (
@@ -47,7 +53,7 @@ class App extends Component {
         <div>
           <Products products={this.state.products} addToCart={this.addToCart}/>
         </div>
-          <Cart myCart={this.state.myCart} total={this.state.total}/>
+          <Cart myCart={this.state.myCart} total={this.state.total} checkOut={this.checkOut}/>
       </div>
     );
   }

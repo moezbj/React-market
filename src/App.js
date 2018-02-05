@@ -1,14 +1,39 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Product from './Product.js'
+
+import Products from './Products.js'
+import Cart from './Cart.js'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state={
-
+      products:[
+        {
+          name:"felfel",
+          price:3000
+        },
+        {
+          name:"tmatem",
+          price:2000
+        },
+        {
+          name:"bsal",
+          price:100
+        }
+      ],
+      myCart:[],
+      total:0
     }
+    this.addToCart=this.addToCart.bind(this)
+  }
+
+  addToCart(el){
+    this.setState({
+      myCart:this.state.myCart.concat(el),
+      total:this.state.total+el.price
+    }, () => console.log(this.state.total))
   }
 
   render() {
@@ -19,8 +44,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React Market </h1>
         </header>
         <div>
-          <Product kadhiya={this.state.kadhiya} myCart={this.state.myCart} />
+          <Products products={this.state.products} addToCart={this.addToCart}/>
         </div>
+          <Cart myCart={this.state.myCart} total={this.state.total}/>
       </div>
     );
   }
